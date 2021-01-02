@@ -1,7 +1,8 @@
-import { FormControl, FormControlLabel, FormLabel, Grid, makeStyles, Radio, RadioGroup, TextField } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import Controls from '../components/controls/Controls'
 import {useForm, Form} from '../components/useForm'
+import * as employeeService from '../services/employeeService'
 
 
 const genderItems = [
@@ -55,6 +56,19 @@ export default function EmployeeForm() {
                         value={values.gender}
                         onChange={handleInputChange}
                         items={genderItems}
+                    />
+                    <Controls.Select
+                        name="departmentId"
+                        label="Department"
+                        value={values.departmentId}
+                        onChange={handleInputChange}
+                        options={employeeService.getDepartmentCollection}
+                    />
+                    <Controls.Checkbox
+                        name="isPermanent"
+                        label="Permanent Employee"
+                        value={values.isPermanent}
+                        onChange={handleInputChange}
                     />
                 </Grid>
             </Grid>
